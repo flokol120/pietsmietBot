@@ -1,0 +1,14 @@
+{
+  "name": "pietsmietBot",
+  "version": "0.1.0",
+  "description": "a simple discord bot posting GIFs of PietSmiet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Florian Dörr",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "*"
+  }
+}
