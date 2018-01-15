@@ -27,6 +27,9 @@ var inviteURL = 'https://discordapp.com/oauth2/authorize?&client_id=' + clientID
 client.on('ready', () => {
   console.log('I am ready!');
   client.user.setPresence({game: {name: 'mit dem YT-Money', type: 0}});
+  for(guild in client.guilds){
+      console.log('joined ' + guild.name);
+  }
 });
 
 //on message emits
