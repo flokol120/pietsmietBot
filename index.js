@@ -17,7 +17,7 @@ client.on('ready', () => {
   client.user.setPresence({game: {name: 'mit dem YT-Money', type: 0}});
 });
 
-//on message emmits
+//on message emits
 
 client.on('message', message => {
   var messageCommands = message.content.split(' ');
