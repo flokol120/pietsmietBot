@@ -70,10 +70,10 @@ client.on('message', message => {
           }else if(messageCommands[1] === 'set'){
           	  //sets a new command
 			  //check if there are less than 3 arguments
-			  if(messageCommands.size < 3){
+			  if(messageCommands.length < 3){
 			  	message.channel.send('Du musst schon den neuen Command eingeben!');
 			  //checks if there are more than 3 arguments
-			  }else if(messageCommands.size > 3){
+			  }else if(messageCommands.length > 3){
                   message.channel.send('Das war jetzt so viel! Achte darauf, dass dein Command keine Leerzeichen enthält!');
 			  }else {
 			  	//check for permission
@@ -120,7 +120,6 @@ client.on('guildCreate', function (guild) {
 //changes the bot prefix
 function changePrefix(newPrefix, guildID) {
     var sql = `UPDATE servers SET prefix = '${newPrefix}' WHERE SID = ${guildID}`;
-    console.log(sql);
     connection.query(sql, function (err, result) {
         if(err){
             console.error('fail!: ' + err.stack);
