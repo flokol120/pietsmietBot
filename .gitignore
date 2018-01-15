@@ -1,5 +1,5 @@
 key.js
 node_modules/*
-.idea/
+.idea/*
 package-lock.json
 post.txt
