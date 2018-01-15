@@ -35,10 +35,10 @@ client.on('message', message => {
 	}else if(messageCommands[1] === 'invite' || messageCommands[1] === 'einladen'){
 		message.channel.send('Hier ist der invite-link des Bots: ' + inviteURL);
 	}else if(messageCommands[1] === 'help' || messageCommands[1] === 'hilfe'){
-    	message.channel.send('Folgende Commands stehen zur Verfügung:\n' + 
-						 	 '!pietsmiet  -  gibt dir eins der geilen GIFs der PietSmiet Truppe!\n'
-						 	 '!invite ODER !einladen  -  schickt dir denn invite link zu.\n' + 
-						 	 '!help ODER !hilfe  -  zeige diesen Text an.');
+    	message.channel.send('Folgende Commands stehen mit dem command ´!pietsmiet´ zur Verfügung:\n' +
+						 	 'gif  -  gibt dir eins der geilen GIFs der PietSmiet Truppe!\n' +
+						 	 'invite ODER einladen  -  schickt dir denn invite link zu.\n' +
+						 	 'help ODER hilfe  -  zeige diesen Text an.');
 	}
   }
 });
