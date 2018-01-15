@@ -9,6 +9,7 @@
   "author": "Florian Dörr",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "*"
+    "discord.js": "*",
+    "mysql": "*"
   }
 }
