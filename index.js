@@ -4,6 +4,8 @@ const key = require('./key');
 const mysql = require('mysql');
 const client = new Discord.Client();
 
+//connect to MySQL Database
+
 var connection = mysql.createConnection(key.mysql);
 
 connection.connect(function (err) {
@@ -40,7 +42,7 @@ client.on('message', message => {
   var guildID = message.channel.guild.id;
   var guildName = message.channel.guild.name;
 
-  //get saved prefix from mySQL Server
+  //get saved prefix from MySQL Server
   var sql = `SELECT prefix FROM servers WHERE SID = ${guildID}`;
   connection.query(sql, function (err, results, fields) {
   	  //if any error occurs the command will be set to default
