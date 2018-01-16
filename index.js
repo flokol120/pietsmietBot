@@ -48,7 +48,17 @@ client.on('message', message => {
       if(err){
       	console.error(err.stack);
       }else {
-      	prefix = results[0].prefix;
+          try{
+              prefix = results[0].prefix;
+          }catch (err){
+              if(err.message == 'Cannot read property \'prefix\' of undefined'){
+                console.log('can\'t find prefix in DB... creating it now...');
+                var guild = message.guild;
+                initServer(guild.id, guild.name);
+              }else {
+                  console.log(err.stack);
+              }
+          }
 	  }
 
 	  //check if first word matches the prefix
@@ -106,15 +116,7 @@ client.on('message', message => {
 //logs to console when added to a new server
 client.on('guildCreate', function (guild) {
   	console.log('joined the server ' + guild.name);
-
-  	var sql = `INSERT INTO servers (SID, name) VALUES (${guild.id}, '${guild.name}')`
-	connection.query(sql, function (err, result) {
-		if(err){
-			console.error('fail!: ' + err.stack);
-			return;
-		}
-		console.log('Added server successfully to the database.')
-    });
+  	initServer(guild.id, guild.name)
 });
 
 //changes the bot prefix
@@ -128,6 +130,17 @@ function changePrefix(newPrefix, guildID) {
         console.log('prefix was changed to ' + newPrefix + ' on ' + guildID);
     });
     return true;
+}
+
+function initServer(guildID, guildName) {
+    var sql = `INSERT INTO servers (SID, name) VALUES (${guildID}, '${guildName}')`
+    connection.query(sql, function (err, result) {
+        if(err){
+            console.error('fail!: ' + err.stack);
+            return;
+        }
+        console.log('Added server ' + guildName + ' successfully to the database.')
+    });
 }
 
 //logs in with the secret bot token
